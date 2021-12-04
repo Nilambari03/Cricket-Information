@@ -11,7 +11,7 @@ struct player
   float avgbat;
   int wicket;
 };struct player p[100];
-void batsman(struct player p[], char ty[20],char a[20],int m)
+void batsman(struct player p[],char a[20],int m)
 {
  int count=0,i;
  for(i=0;i<m;i++){
@@ -56,13 +56,13 @@ void hage(struct player p[],int n)
 }
 void bowlers(struct player p[],int n)
 {
-  char ch[100]; int count;
+  char ch[100]; int count=0;
 	printf("\nEnter Country:");
 	scanf("%s", ch);
 	for (int i = 0; i < n; i++) {
-		if ((strcmp(ch, p[i].country) == 0) &&
-			strcmp(p[i].type, "bowler") == 0)
-   count++;  
+		if ((strcmp(ch,p[i].country) == 0) &&
+			strcmp(p[i].type,"bowler") == 0)
+      count++;  
 	} printf("\nNumber of bowlers from %s are %d.",ch,count);
 }
 void maxwick(struct player p[],int n)
@@ -70,17 +70,16 @@ void maxwick(struct player p[],int n)
   int cont =p[0].wicket ;
 	int c = 0;
 	for (int i = 0; i < n; i++) {
-		if (p[i].wicket > cont && strcmp(p[i].type, "bowler") == 0) {
+		if (p[i].wicket > cont && strcmp(p[i].type, "bowler") == 0) 
 			cont = p[i].wicket;
 			c = i;
-		}
 }printf("\nBowler with maximum wickets is %s with %d wickets.",p[c].name, cont);
 }
 void display(struct player p[],int x)
 {
   {
-  printf("\n Name\t\tAge\t\tCountry\t\tType\t\tODI's\t\tT20's\t\tAvg. batting\t\tWickets\n");
-  printf("\t%s\t\t\t%d\t\t\t%s\t\t%s\t\t\t%d\t\t\t%d\t\t\t%.2f\t\t\t\t%d\t\t",p[x-1].name,p[x-1].age,p[x-1].country,p[x-1].type,p[x-1].odi,p[x-1].T20,p[x-1].avgbat,p[x-1].wicket);
+  printf("\nName\tAge\t\tCountry\t\tType\t\tODI's\t\tT20's\t\tAvg. batting\t\tWickets\n");
+  printf("%s\t\t%d\t\t\t%s\t\t%s\t\t\t%d\t\t\t%d\t\t\t%.2f\t\t\t%d\t\t",p[x-1].name,p[x-1].age,p[x-1].country,p[x-1].type,p[x-1].odi,p[x-1].T20,p[x-1].avgbat,p[x-1].wicket);
 }
 }
 int main() 
@@ -96,7 +95,7 @@ int main()
     scanf("%d", &p[i].age);
     printf("\nEnter the country of player %d:",i+1);
     scanf("%s", p[i].country);
-    printf("\nEnter the type of player %d(batsman/bowler/wicket keeper/all rounder):",i+1);
+    printf("\nEnter the type of player %d(batsman/bowler/wicket_keeper/all_rounder):",i+1);
     scanf("%s", p[i].type);
     printf("\nEnter the no. of Odi's played by player %d:",i+1);
     scanf("%d", &p[i].odi);
@@ -123,7 +122,7 @@ int main()
     case 1 : printf("\n*****************************************************************\n");
              printf("\nEnter the name of country to find number of batsman :\t");
              scanf("%s",a);
-             batsman(p,p[i].type,a,n);
+             batsman(p,a,n);
              goto start; 
     case 2 : printf("\n*****************************************************************\n");     
              sortbat(p, n);
