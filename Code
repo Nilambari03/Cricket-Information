@@ -40,19 +40,19 @@ void sortbat(struct player p[],int n)
     printf("\t%f",p[i].avgbat);
   }
 }
-void havg(struct player p[],int n)
+void hage(struct player p[],int n)
 {
-  float cont = p[0].avgbat;
+  int cont = p[0].age;
 	int c;
 	for (int i = 0; i < n; i++) 
   {
-		if (p[i].avgbat > cont)
+		if (p[i].age > cont)
      {
-			cont = p[i].avgbat;
+			cont = p[i].age;
 			c = i;
 		}
 	}
-	printf("\nPlayer with highest batting avg is %s with avg %.2f.",p[c].name,cont);
+	printf("\nPlayer %s is the older batsman with highest age of %d.",p[c].name,cont);
 }
 void bowlers(struct player p[],int n)
 {
@@ -111,7 +111,7 @@ int main()
   printf("\n**********************************************************\n");
   printf("\n1.Number of batsman from a particular country.");
   printf("\n2.Sort the Batsmam as per the average batting score.");
-  printf("\n3.Batsman with highest average score.");
+  printf("\n3.Batsman with highest age.");
   printf("\n4.Number of bowlers of a particular country.");
   printf("\n5.The bowler that has taken a maximum no of wickets.");
   printf("\n6.Show particular players the entire “Display board information”.");
@@ -129,7 +129,7 @@ int main()
              sortbat(p, n);
              goto start;
     case 3 : printf("\n*****************************************************************\n");     
-             havg(p, n);
+             hage(p, n);
              goto start;
     case 4 : printf("\n*****************************************************************\n");     
              bowlers(p,n);
